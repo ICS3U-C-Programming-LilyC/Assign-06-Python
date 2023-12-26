@@ -17,12 +17,13 @@ def elements_at_odd_positions(list_of_elements):
     # Using a For each loop to get the odd elements from the list.
     for index, element in enumerate(list_of_elements):
         # Checking if the element's index is odd.
-        if (index % 2 == 1):
+        if index % 2 == 1:
             # Appending the odd element to the list.
             odd_element_list.append(element)
 
     # Returning the odd element in the list to the function.
     return odd_element_list
+
 
 # Creating a function that will display the individual digits inside
 # a number using lists.
@@ -42,35 +43,63 @@ def list_of_numbers(whole_number):
     # Returning the list to the function.
     return list_of_digits
 
+
 # Main function that will allow for user input/output and also error check.
 def main():
-    # Getting user inputs.
-    list_as_string = input("Please enter a string of integers separated by spaces: ")
-    whole_number_as_string = input("Please enter a positive whole number: ")
+    # Explaining my program to the user.
+    print("Welcome to my program in python! My program will get a list of numbers from")
+    print(" the user and will display the elements at odd positions in the list.")
+    print(
+        "It will also ask for a number and will display the digits in that number separated by commas."
+    )
+    # Using a While true loop to allow for the user to run my program again, if they want.
+    while True:
+        # Getting user inputs.
+        list_as_string = input(
+            "Please enter a string of integers separated by spaces: "
+        )
+        whole_number_as_string = input("Please enter a positive whole number: ")
 
-    # Using a try catch to catch any errors.
-    try:
-        # Converting the user input as a string into a list of integers.
-        list_as_integer = [int(element) for element in list_as_string.split()]
-        # Converting the user input from a string to an integer.
-        whole_number_as_integer = int(whole_number_as_string)
+        # Using a try catch to catch any errors.
+        try:
+            # Converting the user input as a string into a list of integers.
+            list_as_integer = [int(element) for element in list_as_string.split()]
+            # Converting the user input from a string to an integer.
+            whole_number_as_integer = int(whole_number_as_string)
 
-        # Checking if they entered a negative number and verifying numbers in list are positive.
-        if whole_number_as_integer < 0 or any(num < 0 for num in list_as_integer):
-            print("Please enter a positive number.")
-        # Else they're positive, so call functions.
-        else:
-            odd_elements = elements_at_odd_positions(list_as_integer)
-            separated_digits = list_of_numbers(whole_number_as_integer)
+            # Checking if they entered a negative number and verifying numbers in list are positive.
+            if whole_number_as_integer < 0 or any(num < 0 for num in list_as_integer):
+                print("Please enter a positive number.")
+                continue
 
-            # Displaying the digits of the user's number and the
-            # elements at odd positions from their list.
-            print("The elements in your list at odd positions are: {}.".format(odd_elements))
-            print("The digits of your numbers are: {}.".format(separated_digits))
+            # Else they're positive, so call functions.
+            else:
+                odd_elements = elements_at_odd_positions(list_as_integer)
+                separated_digits = list_of_numbers(whole_number_as_integer)
 
-    # Catching any errors.
-    except:
-        print("Invalid input. Please try again")
+                # Displaying the digits of the user's number and the
+                # elements at odd positions from their list.
+                print(
+                    "The elements in your list at odd positions are: {}.".format(
+                        odd_elements
+                    )
+                )
+                print("The digits of your numbers are: {}.".format(separated_digits))
+
+        # Catching any errors.
+        except:
+            print("Invalid input. Please try again")
+
+        # Asking the user if they want to repeat my program.
+        repeat_program = input(
+            "Do you want to repeat my program? (1 - Yes or 2 - No): "
+        )
+
+        # If their input is not 1, meaning they do not want to run my program again.
+        if repeat_program != "1":
+            # Break out of loop.
+            break
+
 
 if __name__ == "__main__":
     main()

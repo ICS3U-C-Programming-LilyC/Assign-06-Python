@@ -15,6 +15,8 @@ def elements_at_odd_positions(list_of_elements):
     odd_element_list = []
 
     # Using a For each loop to get the odd elements from the list.
+    # Using the enumerate() function to count the current iteration (index variable) and
+    # also the value of the item at the current iteration (element variable).
     for index, element in enumerate(list_of_elements):
         # Checking if the element's index is odd.
         if index % 2 == 1:
@@ -62,14 +64,20 @@ def main():
 
         # Using a try catch to catch any errors.
         try:
-            # Converting the user input as a string into a list of integers.
+            # Converting the string of integers into a list of integers
+            # and splitting the input into individual elements for each element obtained.
             list_as_integer = [int(element) for element in list_as_string.split()]
             # Converting the user input from a string to an integer.
             whole_number_as_integer = int(whole_number_as_string)
 
-            # Checking if they entered a negative number and verifying numbers in list are positive.
+            # Checking if either the whole number or any element in the list is negative.
+            # Using any() function to go through elements in the list and check if any are negative,
+            # otherwise it will return false (meaning valid input).
+            # It uses a For each loop to go through and check the elements in my list.
             if whole_number_as_integer < 0 or any(num < 0 for num in list_as_integer):
+                # If there is a negative than display error message.
                 print("Please enter a positive number.")
+                # Continue to next part of code.
                 continue
 
             # Else they're positive, so call functions.

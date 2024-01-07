@@ -75,9 +75,9 @@ def main():
             # otherwise it will return false (meaning valid input).
             # It uses a For each loop to go through and check the elements in my list.
             if whole_number_as_integer < 0 or any(num < 0 for num in list_as_integer):
-                # If there is a negative than display error message.
+                # If there is a negative then display an error message.
                 print("Please enter a positive number.")
-                # Continue to next part of code.
+                # Continue to the next part of code.
                 continue
 
             # Else they're positive, so call functions.
@@ -97,6 +97,7 @@ def main():
         # Catching any errors.
         except:
             print("Invalid input. Please try again")
+            continue
 
         # Asking the user if they want to repeat my program.
         repeat_program = input(
@@ -105,7 +106,7 @@ def main():
 
         # If their input is not 1, meaning they do not want to run my program again.
         if repeat_program != "1":
-            # Break out of loop.
+            # Break out of the loop.
             break
 
 
